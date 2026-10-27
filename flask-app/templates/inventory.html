@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raw Material Inventory</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Flexographic Plate Workflow Management System</h1>
+    <p>Raw Material Inventory</p>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/new-request">New Plate Request</a>
+    <a href="/inventory">Inventory</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Plate Material Inventory</h2>
+
+        <p>
+            Current raw material availability for
+            flexographic plate production.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Material</th>
+                <th>Description</th>
+                <th>Department</th>
+                <th>Sheets Available</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>EFXR</td>
+                <td>Flexographic Plate Material</td>
+                <td>Film</td>
+                <td>32</td>
+                <td class="status">In Stock</td>
+            </tr>
+
+            <tr>
+                <td>EFM</td>
+                <td>Flexographic Plate Material</td>
+                <td>BLDG 13</td>
+                <td>18</td>
+                <td class="status">In Stock</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Future Integration</h2>
+
+        <p>
+            Future versions of the system will automatically
+            update inventory when raw material is consumed
+            during plate production.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    MSIT 5910 Capstone Project
+</div>
+
+</body>
+</html>

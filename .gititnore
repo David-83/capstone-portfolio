@@ -1,0 +1,24 @@
+# Virtual environments
+venv/
+.venv/
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Python cache and test files
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+
+# Private configuration
+.env
+.env.*
+
+# Backup archives
+*.zip
+
+# Operating system files
+.DS_Store

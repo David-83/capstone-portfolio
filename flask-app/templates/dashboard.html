@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Workflow Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Flexographic Plate Workflow Management System</h1>
+    <p>Production Workflow Dashboard</p>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/new-request">New Plate Request</a>
+    <a href="/inventory">Inventory</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Workflow Dashboard</h2>
+
+        <p>
+            Centralized plate production workflow for
+            Film, Horse Cave, PDIN, and BLDG 13.
+        </p>
+
+        <a class="button" href="/new-request">
+            + New Plate Request
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Plate Requests</h2>
+
+        <table>
+
+            <tr>
+                <th>Job Number</th>
+                <th>Job Name</th>
+                <th>Department</th>
+                <th>Quantity</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            {% for job in jobs %}
+
+            <tr>
+                <td>{{ job["job_number"] }}</td>
+                <td>{{ job["job_name"] }}</td>
+                <td>{{ job["department"] }}</td>
+                <td>{{ job["quantity"] }}</td>
+                <td>{{ job["priority"] }}</td>
+
+                <td class="status">
+                    {{ job["status"] }}
+                </td>
+
+                <td>
+                    <a class="button"
+                       href="/job/{{ job['id'] }}">
+                        View / Update
+                    </a>
+                </td>
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="7">
+                    No plate requests have been created.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    MSIT 5910 Capstone Project
+</div>
+
+</body>
+</html>

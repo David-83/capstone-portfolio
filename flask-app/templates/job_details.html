@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plate Request Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Flexographic Plate Workflow Management System</h1>
+    <p>Workflow Tracking</p>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/new-request">New Plate Request</a>
+    <a href="/inventory">Inventory</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>
+            Job {{ job["job_number"] }} -
+            {{ job["job_name"] }}
+        </h2>
+
+        <table>
+            <tr>
+                <th>Department</th>
+                <th>Plates</th>
+                <th>Priority</th>
+                <th>Current Status</th>
+            </tr>
+
+            <tr>
+                <td>{{ job["department"] }}</td>
+                <td>{{ job["quantity"] }}</td>
+                <td>{{ job["priority"] }}</td>
+                <td class="status">{{ job["status"] }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Update Workflow Status</h2>
+
+        <p>
+            Select the current stage of the plate production process.
+        </p>
+
+        <form method="POST">
+
+            <div class="form-group">
+
+                <label>
+                    <strong>Workflow Status</strong>
+                </label>
+
+                <select name="status">
+
+                    <option value="Requested"
+                        {% if job["status"] == "Requested" %}selected{% endif %}>
+                        Requested
+                    </option>
+
+                    <option value="Plate Making"
+                        {% if job["status"] == "Plate Making" %}selected{% endif %}>
+                        Plate Making
+                    </option>
+
+                    <option value="Plate Mounting"
+                        {% if job["status"] == "Plate Mounting" %}selected{% endif %}>
+                        Plate Mounting
+                    </option>
+
+                    {% if job["department"] == "Horse Cave" %}
+
+                    <option value="Shipping"
+                        {% if job["status"] == "Shipping" %}selected{% endif %}>
+                        Shipping
+                    </option>
+
+                    {% endif %}
+
+                    <option value="Production"
+                        {% if job["status"] == "Production" %}selected{% endif %}>
+                        Production
+                    </option>
+
+                    <option value="Completed"
+                        {% if job["status"] == "Completed" %}selected{% endif %}>
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button class="button" type="submit">
+                Update Status
+            </button>
+
+            <a class="button" href="/">
+                Return to Dashboard
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    MSIT 5910 Capstone Project
+</div>
+
+</body>
+</html>

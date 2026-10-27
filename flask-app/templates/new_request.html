@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>New Plate Request</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Flexographic Plate Workflow Management System</h1>
+    <p>New Plate Request</p>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/new-request">New Plate Request</a>
+    <a href="/inventory">Inventory</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Create New Plate Request</h2>
+
+        <p>
+            Enter the production information below to submit
+            a new plate request.
+        </p>
+
+        <form method="POST">
+
+            <div class="form-group">
+                <label><strong>Job Number</strong></label>
+                <input type="text"
+                       name="job_number"
+                       placeholder="Example: 1201647"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Job Name</strong></label>
+                <input type="text"
+                       name="job_name"
+                       placeholder="Example: Viking Banks"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Department</strong></label>
+
+                <select name="department" required>
+                    <option value="Film">Film</option>
+                    <option value="Horse Cave">Horse Cave</option>
+                    <option value="PDIN">PDIN</option>
+                    <option value="BLDG 13">BLDG 13</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Number of Plates</strong></label>
+
+                <input type="number"
+                       name="quantity"
+                       min="1"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Priority</strong></label>
+
+                <select name="priority">
+                    <option value="Normal">Normal</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+
+            <button class="button" type="submit">
+                Create Plate Request
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    MSIT 5910 Capstone Project
+</div>
+
+</body>
+</html>
